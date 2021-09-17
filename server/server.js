@@ -9,5 +9,5 @@ app.listen(port, () => {
 
 // ROUTES
 app.get('/express_backend', (req, res) => {
-    res.send({ express: 'Connected to Express' });
+    res.send({ data: 'success' });
   });

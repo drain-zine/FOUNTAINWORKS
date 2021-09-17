@@ -20,7 +20,7 @@ const App = () => {
     const connectToBackEnd = async() => {
       try{
         const resp = await fetchConnection();
-        setConnectionStatus({data: resp.express});
+        setConnectionStatus({data: resp.data});
       }catch(e){
         console.log(e);
       }
@@ -29,6 +29,12 @@ const App = () => {
     connectToBackEnd();
 
   }, []);
+
+  useEffect(() => {
+    if(connectionStatus.data !== undefined){
+      console.log(`[SERVER] Connection Status is: ${connectionStatus.data}`);
+    }
+  }, [connectionStatus]);
 
   return (
     <div className="App">
