@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from "react";
 import logo from './logo.svg';
 import './App.css';
+import {API_ENDPOINTS} from "./constants.js";
 
 const App = () => {
 
   const [connectionStatus, setConnectionStatus] = useState({});
+  const [images, setImages] = useState({});
 
-  const fetchConnection = async () => {
-    const response = await fetch('/express_backend');
+  const fetchConnection = async (url) => {
+    console.log(url);
+    const response = await fetch(url);
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -17,16 +20,28 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log(API_ENDPOINTS);
     const connectToBackEnd = async() => {
       try{
-        const resp = await fetchConnection();
+        const resp = await fetchConnection(API_ENDPOINTS.CONNECT);
         setConnectionStatus({data: resp.data});
       }catch(e){
         console.log(e);
       }
     };
 
+    const fetchImages = async() => {
+      try{
+        const resp = await fetchConnection(`${API_ENDPOINTS.ALL_IMAGES}/pages/HomePage/WestonCage.jpg`);
+        console.log(resp);
+        setImages({images: resp});
+      }catch(e){
+        console.log(e);
+      }
+    }
+
     connectToBackEnd();
+    fetchImages();
 
   }, []);
 
