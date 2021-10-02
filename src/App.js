@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from "./pages/Home";
+import Landing from "./pages/Landing/Landing";
 
 export default () => {
-  return <Home name="Sammy" />;
+  return <Landing />;
 };

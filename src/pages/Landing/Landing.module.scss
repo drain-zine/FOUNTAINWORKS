@@ -1,0 +1,24 @@
+//@import "../../styles/variables.scss";
+// colors
+$white: #FFFFFF;
+
+// fonts
+$headingFont: Helvetica;
+
+// font sizes
+$baseFontSize: 16px;
+
+.page{
+    background-image: url("./assets/busyDesktop.jpg");
+    position: absolute;
+}
+
+.titleBar{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    color: $white;
+    font-family: $headingFont;
+    font-size: 8 * $baseFontSize;
+}
